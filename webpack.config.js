@@ -24,7 +24,7 @@ const commonConfig = {
   ],
 };
 
-const prductionConfig = () => commonConfig;
+const productionConfig = () => commonConfig;
 
 const developmentConfig = () => {
   const config = {
