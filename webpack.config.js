@@ -24,8 +24,30 @@ const commonConfig = {
   ],
 };
 
+const prductionConfig = () => commonConfig;
+
+const developmentConfig = () => {
+  const config = {
+    devServer: {
+      historyApiFallback: true,
+      stats: 'errors-only',
+      host: process.env.HOST,
+      port: process.env.PORT,
+    },
+  };
+
+  return Object.assign(
+    {},
+    commonConfig,
+    config
+  );
+};
+
 module.exports = (env) => {
   console.log('env', env);
+  if (env === 'production') {
+    return productionConfig();
+  }
 
-  return commonConfig;
+  return developmentConfig();
 }
